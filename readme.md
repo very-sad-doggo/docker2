@@ -1,3 +1,5 @@
+I didn't manage to make frontend read what's in the docx files in the lib_catalog, nonetheless it can write to it lol
+
 1. Creating network: 
 docker network create --driver=bridge --subnet=172.28.0.0/16 --ip-range=172.28.5.0/24 --gateway=172.28.5.254 backend_network
 
