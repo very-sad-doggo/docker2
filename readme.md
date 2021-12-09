@@ -13,4 +13,4 @@ Running databse. docker run -d -p 5432:5432 --restart=on-failure:10 -e POSTGRES_
 
 4. Backend (docker_homework/lib_catalog folder) 
 Creating image for backend. "docker build . -t vladimir/backend"
-Running backend. docker network create --driver=bridge --subnet=172.28.0.0/16 --ip-range=172.28.5.0/24 --gateway=172.28.5.254 backend_network
+Running backend. docker run -it -p 8000:8000 --network backend_network --ip 172.28.5.7 --name backend vladimir/backend
