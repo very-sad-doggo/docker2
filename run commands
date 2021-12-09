@@ -1,0 +1,6 @@
+BACKEND: docker run --restart=on-failure:10 -d -p 8000:8000 -v ./var/lib/postgresql/data:/usr/src/backend --network backend_network --ip 172.28.5.7 --name backend vladimir/backend
+PSQL: docker run -d -p 5432:5432 --restart=on-failure:10 -e POSTGRES_PASSWORD=django -e POSTGRES_USER=django -e POSTGRES_DB=django -e USERMAP_UID=999 -e USERMAP_GID=999 -d -v postgres:/var/lib/postgresql/data --network backend_network --ip 172.28.5.5 --name database database:01
+network create: 
+
+
+docker exec -d database "/bin/sh sed -i -e"s/^#password_encryption = scram-sha-256.*$/password_encryption = md5/" /var/lib/postgresql/data/postgresql.conf"
