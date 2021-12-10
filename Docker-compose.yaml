@@ -16,7 +16,7 @@ services:
     volumes:
     - ./data/db:/var/lib/postgresql/data
   backend:
-    build: ./lib_catalog/Dockerfile
+    build: ./lib_catalog/.
     ports:
       - "8000:8000"
     depends_on:
