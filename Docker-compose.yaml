@@ -2,7 +2,9 @@ services:
   frontend:
     image: vladimir/frontend
     ports: 
-    - "3000:3000"
+      - "3000:3000"
+    links: 
+      - "database:database"
   database:
     image: database:01
     environment:
@@ -14,10 +16,13 @@ services:
     ports: 
       - "5432:5432"
     volumes:
-    - ./data/db:/var/lib/postgresql/data
+      - ./data/db:/var/lib/postgresql/data
   backend:
-    build: ./lib_catalog/.
+    image: vladimir/backend
     ports:
       - "8000:8000"
+    links: 
+      - "database:database"
+    restart: on-failure:5
     depends_on:
       - database
