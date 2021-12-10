@@ -1,0 +1,21 @@
+services:
+  frontend:
+    image: vladimir/frontend
+    ports: 
+    - "3000:3000"
+  database:
+    image: database:01
+    environment:
+      - POSTGRES_USER=django 
+      - POSTGRES_PASSWORD=django 
+      - POSTGRES_DB=django 
+      - USERMAP_UID=999 
+      - USERMAP_GID=999
+    volumes:
+    - ./data/db:/var/lib/postgresql/data
+  backend:
+    build: ./lib_catalog/Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database

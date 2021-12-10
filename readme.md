@@ -9,7 +9,7 @@ Running frontend. docker run -d -p 3000:3000 --network backend_network --ip 172.
 
 3. Database (docker_homework folder)
 Creating image for database. "docker build . -t database:01 
-Running databse. docker run -d -p 5432:5432 --restart=on-failure:10 -e POSTGRES_PASSWORD=django -e POSTGRES_USER=django -e POSTGRES_DB=django -e USERMAP_UID=999 -e USERMAP_GID=999 -d -v postgres:/var/lib/postgresql/data --network backend_network --ip 172.28.5.5 --name database database:01
+Running databse. docker run -d -p 5432:5432 --restart=on-failure:10 -e POSTGRES_PASSWORD=django -e POSTGRES_USER=django -e POSTGRES_DB=django -e USERMAP_UID=999 -e USERMAP_GID=999 -v postgres:/var/lib/postgresql/data --network backend_network --ip 172.28.5.5 --name database database:01
 
 4. Backend (docker_homework/lib_catalog folder) 
 Creating image for backend. "docker build . -t vladimir/backend"
